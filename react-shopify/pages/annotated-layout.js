@@ -7,7 +7,7 @@ import {
   Page,
   Stack,
   TextField,
-  SettingsToggle,
+  SettingToggle,
   TextStyle,
 } from '@shopify/polaris';
 
