@@ -1,7 +1,9 @@
+import { Page, TextStyle } from '@shopify/polaris';
+
 const Index = () => (
-  <div>
-    <p>React Shopify App</p>
-  </div>
+  <Page>
+    <TextStyle variation="positive">React Shopify App</TextStyle>
+  </Page>
 );
 
 export default Index;
