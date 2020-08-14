@@ -7,6 +7,7 @@ const { verifyRequest } = require('@shopify/koa-shopify-auth');
 const { default: graphQLProxy } = require('@shopify/koa-shopify-graphql-proxy');
 const { ApiVersion } = require('@shopify/koa-shopify-graphql-proxy');
 const session = require('koa-session');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -39,7 +40,7 @@ app.prepare().then(() => {
     })
   );
 
-  server.use(graphQLProxy({ version: ApiVersion.July1 }));
+  server.use(graphQLProxy({ version: ApiVersion.October19 }));
   server.use(verifyRequest());
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);

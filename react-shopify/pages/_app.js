@@ -2,10 +2,8 @@ import App from 'next/app';
 import Head from 'next/head';
 import { AppProvider } from '@shopify/polaris';
 import { Provider } from '@shopify/app-bridge-react';
-import '@shopify/polaris/dist/styles.css';
-import translations from '@shopify/polaris/locales/en.json';
+//import '@shopify/polaris/styles.css';
 import Cookies from 'js-cookie';
-
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
@@ -23,14 +21,15 @@ class MyApp extends App {
       shopOrigin: Cookies.get('shopOrigin'),
       forceRedirect: true,
     };
+
     return (
       <React.Fragment>
         <Head>
-          <title>Kuppcakes</title>
+          <title>Sample App</title>
           <meta charSet="utf-8" />
         </Head>
         <Provider config={config}>
-          <AppProvider i18n={translations}>
+          <AppProvider>
             <ApolloProvider client={client}>
               <Component {...pageProps} />
             </ApolloProvider>
