@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Client from 'shopify-buy';
+
+// Initializing a client to return content in the store's primary language
+const client = Client.buildClient({
+  storefrontAccessToken: 'your-access-token',
+  domain: 'your-shopify-url.myshopify.com',
+});
 
 ReactDOM.render(
   <React.StrictMode>
