@@ -3,18 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Client from 'shopify-buy';
+import { Provider } from 'react-redux';
+import store from './reduxStore/store';
 
-// Initializing a client to return content in the store's primary language
-const client = Client.buildClient({
-  storefrontAccessToken: 'your-access-token',
-  domain: 'your-shopify-url.myshopify.com',
-});
+import {
+  fetchAllProducts,
+  createCheckout,
+  fetchShopInfo,
+} from './reduxStore/actions/storeClientActions';
+
+//store.dispatch({ type: 'CLIENT_CREATED', payload: client });
+store.dispatch(fetchAllProducts(), createCheckout(), fetchShopInfo());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
