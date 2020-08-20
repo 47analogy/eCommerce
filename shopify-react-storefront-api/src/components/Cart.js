@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import LineItem from './LineItem';
 
 class Cart extends Component {
@@ -65,4 +66,10 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    checkout: state.cart.checkout,
+  };
+};
+
+export default connect(mapStateToProps)(Cart);
