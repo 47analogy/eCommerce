@@ -20,9 +20,8 @@ class Products extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapping state to props');
   return {
-    products: state.cart.products,
+    products: state.storeClient.products,
   };
 };
 

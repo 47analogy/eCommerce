@@ -7,13 +7,19 @@ import { Provider } from 'react-redux';
 import store from './reduxStore/store';
 
 import {
+  // createClient,
   fetchAllProducts,
   createCheckout,
   fetchShopInfo,
 } from './reduxStore/actions/storeClientActions';
 
 //store.dispatch({ type: 'CLIENT_CREATED', payload: client });
-store.dispatch(fetchAllProducts(), createCheckout(), fetchShopInfo());
+store.dispatch(
+  // createClient(),
+  fetchAllProducts(),
+  createCheckout(),
+  fetchShopInfo()
+);
 
 ReactDOM.render(
   <Provider store={store}>

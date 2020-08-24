@@ -7,6 +7,7 @@ function DisplayProducts() {
   const state = store.getState();
 
   const addVariantToCart = (variantId, quantity) => {
+    console.log('state products', state.products);
     const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }];
     const checkoutId = state.checkout.id;
 
