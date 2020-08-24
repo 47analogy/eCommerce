@@ -1,20 +1,17 @@
 import React from 'react';
 import Products from './Products';
 import { connect } from 'react-redux';
-import store from '../reduxStore/store';
 
-function DisplayProducts() {
-  const state = store.getState();
-
+function DisplayProducts(props) {
   const addVariantToCart = (variantId, quantity) => {
-    console.log('state products', state.products);
+    console.log('display products', props.products);
     const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }];
-    const checkoutId = state.checkout.id;
+    const checkoutId = props.checkout.id;
 
-    state.client.checkout
+    props.client.checkout
       .addLineItems(checkoutId, lineItemsToAdd)
       .then((res) => {
-        store.dispatch({
+        props.dispatch({
           type: 'ADD_VARIANT_TO_CART',
           payload: { isCartOpen: true, checkout: res },
         });
@@ -24,12 +21,19 @@ function DisplayProducts() {
     <div>
       <h1>Available Products</h1>
       <Products
-        products={state.products}
-        client={state.client}
+        products={props.products}
+        client={props.client}
         addVariantToCart={addVariantToCart}
       />
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    client: state.client,
+    products: state.storeClient.products,
+  };
+};
 
 export default connect((state) => state)(DisplayProducts);
